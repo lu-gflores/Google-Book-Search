@@ -1,24 +1,26 @@
-import React, {useState, useEffect, Component } from "react";
+import React from "react";
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import logo from "./logo.svg";
 import "./App.css";
-import axios from 'axios'
-function App() {
-  const [friends, setFriends] = useState([]);
+import Search from './pages/Search'
+import Saved from './pages/Saved'
+import Header from './components/Header'
+import Nav from './components/Nav'
 
-  useEffect(() => {
-    axios.get('/api/friends').then((res)=> setFriends(res.data));
-  }, []);
+function App() {
   
   return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
+    <Router>
+      <div className="App">
+      <Nav/>
+      <Header/>
+      
+      <Route path="/" component={Search}/>
+      <Route path="/search" component={Search}/>
+      <Route path="/saved" component={Saved}/>
       </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
+    </Router>
+    
   );
 }
 
