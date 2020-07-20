@@ -13,6 +13,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+
 // Send every other request to the React app
 // Define any API routes before this runs
 // app.get("*", (req, res) => {
