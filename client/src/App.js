@@ -14,8 +14,7 @@ function App() {
       <div className="App">
       <Nav/>
       <Header/>
-      
-      <Route path="/" component={Search}/>
+
       <Route path="/search" component={Search}/>
       <Route path="/saved" component={Saved}/>
       </div>
